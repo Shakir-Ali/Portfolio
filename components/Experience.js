@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect } from 'react';
+import { Calendar, MapPin, Building2 } from 'lucide-react';
 import Image from 'next/image';
 
 const Experience = () => {
@@ -32,7 +33,7 @@ const Experience = () => {
       company: "Infosys",
       location: "Jaipur, Rajasthan",
       date: "Oct 2024 - Present",
-      logo: "/images/infosys-logo.svg",
+      logo: "/images/infosys-logo.png",
       achievements: [
         "Led a multi-functional team of 5 engineers to deliver high-performance scalable applications, improving system efficiency by 75%.",
         "Collaborated with product stakeholders to define roadmaps and translate requirements into technical solutions.",
@@ -67,74 +68,70 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="section py-20">
-      <div className="container mx-auto px-4">
-        <h2 className="section-title reveal text-center mb-16">Career Journey at Infosys</h2>
+    <section id="experience" className="section">
+      <div className="container mx-auto px-4 py-16">
+        <h2 className="section-title reveal text-3xl font-bold text-center mb-12">Professional Journey</h2>
         
-        {/* Company Logo */}
-        <div className="flex justify-center mb-16 reveal">
-          <div className="relative w-48 h-48 mb-8">
+        <div className="max-w-5xl mx-auto">
+
+          {/* Company Logo */}
+          <div className="relative mb-8">
             <Image
-              src="/images/infosys-logo.svg"
-              alt="Infosys logo"
-              fill
-              className="object-contain"
-              priority
+              src="/images/infosys-logo.png"
+              alt="Infosys"
+              width={80}
+              height={80}
+              className="opacity-70"
             />
           </div>
-        </div>
 
-        {/* Timeline */}
-        <div className="relative max-w-5xl mx-auto">
-          {/* Vertical Line */}
-          <div 
-            className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary/20 via-primary to-primary/20"
-            style={{ marginTop: '24px' }}
-          />
-
-          {/* Experience Items */}
-          <div className="relative">
+          {/* Experience Cards */}
+          <div className="relative space-y-6 pl-8">
+            {/* Timeline line */}
+            <div className="absolute left-0 top-0 h-full w-1 bg-border">
+              <div className="timeline-progress absolute top-0 w-full bg-primary origin-top"></div>
+            </div>
             {experiences.map((exp, index) => (
-              <div 
-                key={index} 
-                className={`reveal mb-24 flex w-full items-center justify-center last:mb-0`}
-              >
-                <div className="grid grid-cols-[1fr,auto,1fr] w-full items-center gap-4">
-                  {/* Left side content (for even indexes) */}
-                  <div className={`${index % 2 === 0 ? 'block' : 'hidden md:block'} text-right`}>
-                    {index % 2 === 0 && (
-                      <div className="p-6 bg-card rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <h3 className="text-xl font-semibold text-primary mb-2">{exp.title}</h3>
-                        <p className="text-muted-foreground mb-1">{exp.location}</p>
-                        <p className="text-sm font-medium text-primary/80 mb-4">{exp.date}</p>
-                        <ul className="list-disc list-inside space-y-2 text-left">
-                          {exp.achievements.map((achievement, i) => (
-                            <li key={i} className="text-sm text-muted-foreground">{achievement}</li>
-                          ))}
-                        </ul>
+              <div key={index} className="reveal">
+                <div className="relative">
+                  {/* Timeline marker */}
+                  <div className="absolute -left-[10px] top-6 w-[18px] h-[4px] bg-primary"></div>
+                  {/* Role Card */}
+                  <div className="bg-muted p-6 rounded-xl border border-border hover:border-primary/20 transition-all duration-300">
+                    {/* Header */}
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
+                      <div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <Building2 className="text-primary h-5 w-5" />
+                          <h3 className="text-xl font-semibold">{exp.title}</h3>
+                        </div>
+                        <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                          <div className="flex items-center gap-1">
+                            <Calendar className="h-4 w-4" />
+                            <span>{exp.date}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <MapPin className="h-4 w-4" />
+                            <span>{exp.location}</span>
+                          </div>
+                        </div>
                       </div>
-                    )}
-                  </div>
+                    </div>
 
-                  {/* Timeline node */}
-                  <div className="relative flex items-center justify-center z-10">
-                    <div className="w-6 h-6 rounded-full bg-primary shadow-glow"></div>
-                  </div>
-
-                  {/* Right side content (for odd indexes) */}
-                  <div className={`${index % 2 === 1 ? 'block' : 'hidden md:block'}`}>
-                    {index % 2 === 1 && (
-                      <div className="p-6 bg-card rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <h3 className="text-xl font-semibold text-primary mb-2">{exp.title}</h3>
-                        <p className="text-muted-foreground mb-1">{exp.location}</p>
-                        <p className="text-sm font-medium text-primary/80 mb-4">{exp.date}</p>
-                        <ul className="list-disc list-inside space-y-2">
-                          {exp.achievements.map((achievement, i) => (
-                            <li key={i} className="text-sm text-muted-foreground">{achievement}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                    {/* Achievements */}
+                    <ul className="space-y-4">
+                      {exp.achievements.map((achievement, i) => (
+                        <li 
+                          key={i} 
+                          className="pl-6 relative text-muted-foreground group"
+                        >
+                          <div className="absolute left-0 top-[10px] w-2 h-2 rounded-full bg-primary scale-0 group-hover:scale-100 transition-transform duration-200"></div>
+                          <div className="border-l-2 border-border group-hover:border-primary transition-colors duration-200 pl-4 py-1">
+                            {achievement}
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -144,11 +141,6 @@ const Experience = () => {
       </div>
 
       <style jsx>{`
-        .shadow-glow {
-          box-shadow: 0 0 0 4px rgba(var(--primary), 0.2),
-                      0 0 0 8px rgba(var(--primary), 0.1);
-        }
-        
         .reveal {
           opacity: 0;
           transform: translateY(20px);
@@ -160,14 +152,18 @@ const Experience = () => {
           transform: translateY(0);
         }
 
-        @media (max-width: 768px) {
-          .grid-cols-[1fr,auto,1fr] {
-            grid-template-columns: auto 1fr;
-            gap: 1rem;
-          }
+        .timeline-progress {
+          height: 0%;
+          transition: height 0.6s ease-in-out;
+          animation: grow-line 1s ease forwards;
+        }
 
-          .text-right {
-            text-align: left;
+        @keyframes grow-line {
+          0% {
+            height: 0%;
+          }
+          100% {
+            height: 100%;
           }
         }
       `}</style>
