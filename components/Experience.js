@@ -75,20 +75,20 @@ const Experience = () => {
         <div className="max-w-5xl mx-auto">
 
           {/* Company Logo */}
-          <div className="relative mb-8">
+          <div className="relative mb-8 reveal">
             <Image
               src="/images/infosys-logo.png"
               alt="Infosys"
               width={80}
               height={80}
-              className="opacity-70"
+              className="opacity-70 hover:opacity-100 transition-opacity duration-300"
             />
           </div>
 
           {/* Experience Cards */}
           <div className="relative space-y-6 pl-8">
             {/* Timeline line */}
-            <div className="absolute left-0 top-0 h-full w-1 bg-border">
+            <div className="absolute left-0 top-0 h-full w-1 bg-border reveal">
               <div className="timeline-progress absolute top-0 w-full bg-primary origin-top"></div>
             </div>
             {experiences.map((exp, index) => (
