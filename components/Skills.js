@@ -106,23 +106,26 @@ const Skills = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (
-            <div key={index} className="reveal">
-              <h3 className="text-xl font-semibold mb-4">{category.title}</h3>
-              <div className="grid grid-cols-2 gap-2">
+            <div key={index} className="reveal bg-background/50 backdrop-blur-sm p-6 rounded-2xl border border-border/50 shadow-lg">
+              <h3 className="text-xl font-semibold mb-6 text-primary/80">{category.title}</h3>
+              <div className="grid grid-cols-2 gap-4">
                 {category.skills.map((skill, i) => (
                   <div 
                     key={i} 
-                    className="flex items-center p-2 bg-card rounded-lg hover:bg-card/80 transition-colors"
+                    className="group relative p-4 bg-card rounded-xl hover:bg-primary/5 transition-all duration-300 transform hover:scale-105"
                   >
-                    <div className="w-8 h-8 mr-2 relative">
-                      <Image
-                        src={skill.icon}
-                        alt={`${skill.name} icon`}
-                        fill
-                        className="object-contain"
-                      />
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 relative transform group-hover:rotate-12 transition-transform duration-300">
+                        <Image
+                          src={skill.icon}
+                          alt={`${skill.name} icon`}
+                          fill
+                          className="object-contain drop-shadow-md"
+                        />
+                      </div>
+                      <span className="text-sm font-medium group-hover:text-primary transition-colors duration-300">{skill.name}</span>
                     </div>
-                    <span className="text-sm font-medium">{skill.name}</span>
+                    <div className="absolute inset-x-0 bottom-0 h-1 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full"></div>
                   </div>
                 ))}
               </div>
