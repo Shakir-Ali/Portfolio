@@ -5,24 +5,33 @@ import { Mail, Phone, Linkedin, Github } from 'lucide-react';
 const Contact = () => {
   useEffect(() => {
     const reveals = document.querySelectorAll('.reveal');
+    let observer;
     
-    const revealElements = () => {
-      reveals.forEach(element => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < windowHeight - elementVisible) {
-          element.classList.add('active');
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
         }
       });
-    };
+    }, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    });
     
-    window.addEventListener('scroll', revealElements);
-    revealElements();
+    reveals.forEach(element => {
+      observer.observe(element);
+      setTimeout(() => {
+        if (!element.classList.contains('active')) {
+          element.classList.add('active');
+        }
+      }, 1000);
+    });
     
     return () => {
-      window.removeEventListener('scroll', revealElements);
+      if (observer) {
+        observer.disconnect();
+      }
     };
   }, []);
 
