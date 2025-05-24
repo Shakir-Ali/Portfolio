@@ -54,28 +54,46 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="section bg-background">
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="section-title reveal text-3xl font-bold text-center mb-12">Get in Touch</h2>
+    <section id="contact" className="min-h-screen relative bg-gradient-to-b from-background/95 to-background">
+      {/* Grid pattern background */}
+      <div className="absolute inset-0 bg-grid-small-white/[0.2] -z-[1]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
+
+      <div className="container mx-auto px-4 pt-32 pb-40 relative">
+        <h2 className="text-4xl font-bold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+          Get in Touch
+        </h2>
+        <p className="text-center text-muted-foreground mb-12 max-w-lg mx-auto">
+          Let's connect and explore opportunities together. Feel free to reach out through any of these channels.
+        </p>
         
-        <div className="reveal max-w-3xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {contactInfo.map((info, index) => (
               <a
                 key={index}
                 href={info.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-6 bg-muted rounded-lg transition-all duration-300 hover:shadow-md hover:scale-105"
+                className="group relative overflow-hidden"
               >
-                <div className="flex items-start gap-4">
-                  <span className="p-2 bg-background rounded-lg text-primary group-hover:text-primary/80">
-                    {info.icon}
-                  </span>
-                  <div>
-                    <h3 className="font-semibold mb-1">{info.label}</h3>
-                    <p className="text-sm text-muted-foreground">{info.value}</p>
+                <div className="relative bg-background/50 backdrop-blur-sm p-8 rounded-2xl border border-primary/10 
+                  transition-all duration-300 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 
+                    group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="flex items-start gap-6 relative z-10">
+                    <span className="p-3 bg-primary/10 rounded-xl text-primary group-hover:scale-110 transition-transform duration-300">
+                      {info.icon}
+                    </span>
+                    <div className="space-y-2">
+                      <h3 className="font-semibold text-lg text-foreground/90">{info.label}</h3>
+                      <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                        {info.value}
+                      </p>
+                    </div>
                   </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0 
+                    transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                 </div>
               </a>
             ))}

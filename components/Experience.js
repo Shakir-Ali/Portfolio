@@ -68,105 +68,103 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="section">
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="section-title reveal text-3xl font-bold text-center mb-12">Professional Journey</h2>
-        
-        <div className="max-w-5xl mx-auto">
+    <section id="experience" className="min-h-screen relative bg-gradient-to-b from-background/95 to-background">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 bg-grid-small-white/[0.2] -z-[1]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
+      
+      <div className="container pt-32 pb-40 relative">
+        <div className="relative">
+          {/* Animated background elements */}
+          <div className="absolute -top-16 right-1/3 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute top-32 left-1/3 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse delay-700" />
+          
+          <h2 className="text-4xl lg:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+            Professional Journey
+          </h2>
 
-          {/* Company Logo */}
-          <div className="relative mb-8 reveal">
-            <Image
-              src="/images/infosys-logo.png"
-              alt="Infosys"
-              width={80}
-              height={80}
-              className="opacity-70 hover:opacity-100 transition-opacity duration-300"
-            />
-          </div>
-
-          {/* Experience Cards */}
-          <div className="relative space-y-6 pl-8">
-            {/* Timeline line */}
-            <div className="absolute left-0 top-0 h-full w-1 bg-border reveal">
-              <div className="timeline-progress absolute top-0 w-full bg-primary origin-top"></div>
+          <div className="max-w-5xl mx-auto relative">
+            {/* Company Logo */}
+            <div className="relative mb-12 reveal flex justify-center">
+              <div className="relative group">
+                <div className="absolute -inset-2 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 rounded-full opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
+                <Image
+                  src="/images/infosys-logo.png"
+                  alt="Infosys"
+                  width={100}
+                  height={100}
+                  className="relative z-10 opacity-80 hover:opacity-100 transition-all duration-300 group-hover:scale-105"
+                />
+              </div>
             </div>
-            {experiences.map((exp, index) => (
-              <div key={index} className="reveal">
-                <div className="relative">
-                  {/* Timeline marker */}
-                  <div className="absolute -left-[10px] top-6 w-[18px] h-[4px] bg-primary"></div>
-                  {/* Role Card */}
-                  <div className="bg-muted p-6 rounded-xl border border-border hover:border-primary/20 transition-all duration-300">
-                    {/* Header */}
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
-                      <div>
-                        <div className="flex items-center gap-2 mb-2">
-                          <Building2 className="text-primary h-5 w-5" />
-                          <h3 className="text-xl font-semibold">{exp.title}</h3>
+
+            {/* Experience Timeline */}
+            <div className="relative space-y-8 pl-8">
+              {/* Timeline line */}
+              <div className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-primary/20 via-primary/10 to-transparent reveal">
+                <div className="timeline-progress absolute top-0 w-full bg-gradient-to-b from-primary to-primary/50 origin-top"></div>
+              </div>
+
+              {experiences.map((exp, index) => (
+                <div key={index} className="reveal group">
+                  <div className="relative">
+                    {/* Timeline marker */}
+                    <div className="absolute -left-[22px] top-8 w-9 h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    
+                    {/* Role Card */}
+                    <div className="relative bg-background/50 backdrop-blur-sm p-6 rounded-2xl border border-primary/10 hover:border-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
+                      {/* Gradient borders */}
+                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+                      
+                      {/* Glow effect */}
+                      <div className="absolute -inset-px bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
+                      
+                      {/* Content */}
+                      <div className="relative">
+                        {/* Header */}
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                          <h3 className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+                            {exp.title}
+                          </h3>
+                          <span className="flex items-center gap-2 text-sm text-primary/80">
+                            <Calendar size={16} className="group-hover:rotate-12 transition-transform duration-300" />
+                            {exp.date}
+                          </span>
                         </div>
-                        <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                          <div className="flex items-center gap-1">
-                            <Calendar className="h-4 w-4" />
-                            <span>{exp.date}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <MapPin className="h-4 w-4" />
-                            <span>{exp.location}</span>
-                          </div>
+                        
+                        {/* Company & Location */}
+                        <div className="flex flex-col sm:flex-row gap-3 mb-4 text-sm text-muted-foreground">
+                          <span className="flex items-center gap-1">
+                            <Building2 size={16} />
+                            {exp.company}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <MapPin size={16} />
+                            {exp.location}
+                          </span>
                         </div>
+
+                        {/* Achievements */}
+                        <ul className="space-y-3 text-muted-foreground">
+                          {exp.achievements.map((achievement, i) => (
+                            <li key={i} className="group/item flex items-start gap-2">
+                              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/50 group-hover/item:bg-primary transition-colors duration-300" />
+                              <span className="group-hover/item:text-foreground transition-colors duration-300">
+                                {achievement}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
-
-                    {/* Achievements */}
-                    <ul className="space-y-4">
-                      {exp.achievements.map((achievement, i) => (
-                        <li 
-                          key={i} 
-                          className="pl-6 relative text-muted-foreground group"
-                        >
-                          <div className="absolute left-0 top-[10px] w-2 h-2 rounded-full bg-primary scale-0 group-hover:scale-100 transition-transform duration-200"></div>
-                          <div className="border-l-2 border-border group-hover:border-primary transition-colors duration-200 pl-4 py-1">
-                            {achievement}
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .reveal {
-          opacity: 0;
-          transform: translateY(20px);
-          transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal.active {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .timeline-progress {
-          height: 0%;
-          transition: height 0.6s ease-in-out;
-          animation: grow-line 1s ease forwards;
-        }
-
-        @keyframes grow-line {
-          0% {
-            height: 0%;
-          }
-          100% {
-            height: 100%;
-          }
-        }
-      `}</style>
     </section>
   );
 };
