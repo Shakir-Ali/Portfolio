@@ -52,20 +52,16 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="min-h-screen relative bg-gradient-to-b from-background to-background/95 py-10">
+    <section id="projects" className="relative bg-gradient-to-b from-background to-background/95">
       {/* Background decorative elements */}
       <div className="absolute inset-0 bg-grid-small-white/[0.2] -z-[1]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
       
-      <div className="container pt-36 pb-44 relative">
+      <div className="container py-8 md:py-12 relative">
         <div className="relative">
           {/* Animated background elements */}
           <div className="absolute -top-16 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" />
           <div className="absolute top-32 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse delay-700" />
-          
-          <h2 className="text-4xl lg:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
-            Featured Projects
-          </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {projects.map((project, index) => (

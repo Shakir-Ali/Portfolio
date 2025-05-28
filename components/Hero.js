@@ -1,42 +1,16 @@
 'use client'
 import React from 'react';
-import { ArrowDownRight, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDownRight } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <div className="relative w-full bg-dot-pattern">
+    <div className="relative w-full min-h-screen bg-dot-pattern">
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background/50" />
       
       {/* Main content */}
       <div className="container relative mx-auto px-4">
-        <div className="flex flex-col items-start justify-center min-h-[85vh] py-20">
-          {/* Social links */}
-          <div className="flex gap-6 mb-8">
-            <a 
-              href="https://github.com/yourusername" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
-              <Github className="w-6 h-6" />
-            </a>
-            <a 
-              href="https://linkedin.com/in/yourusername" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a 
-              href="mailto:your.email@example.com"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
-              <Mail className="w-6 h-6" />
-            </a>
-          </div>
-
+        <div className="flex flex-col items-start justify-center min-h-screen pt-20 pb-8">
           {/* Main heading */}
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-4 leading-tight">
             Technology

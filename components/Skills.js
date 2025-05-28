@@ -1,17 +1,12 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import { LayoutGrid, Code2, Cloud, Database, Wrench } from 'lucide-react';
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState(0);
-  const [positions] = useState({
-    0: { x: 0, w: 225 },     // Frontend Development
-    1: { x: 225, w: 225 },   // Backend Development
-    2: { x: 450, w: 175 },   // DevOps & Cloud
-    3: { x: 625, w: 145 },   // Databases
-    4: { x: 770, w: 165 }    // Tools & Testing
-  });
+  const [navPositions, setNavPositions] = useState({ x: 0, width: 0 });
+  const buttonRefs = useRef([]);
 
   const skillCategories = [
     {
@@ -81,32 +76,53 @@ const Skills = () => {
     "Tools & Testing": <Wrench className="w-5 h-5" />
   };
 
+  useEffect(() => {
+    // Function to update the active button position
+    const updatePosition = () => {
+      const activeButton = buttonRefs.current[activeCategory];
+      if (activeButton) {
+        const buttonRect = activeButton.getBoundingClientRect();
+        const navbarRect = activeButton.parentElement.getBoundingClientRect();
+        setNavPositions({
+          x: buttonRect.left - navbarRect.left,
+          width: buttonRect.width
+        });
+      }
+    };
+
+    // Initial position update
+    updatePosition();
+
+    // Update on window resize
+    window.addEventListener('resize', updatePosition);
+    return () => window.removeEventListener('resize', updatePosition);
+  }, [activeCategory]);
+
   return (
     <section id="skills" className="py-10 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-8">Skills</h2>
-        </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
         
         {/* Category Navigation */}
         <div className="flex justify-center mb-8">
           <nav className="flex flex-nowrap overflow-x-auto max-w-full p-1.5 bg-white rounded-xl shadow-lg relative">
             <div 
-              className="absolute h-[calc(100%-8px)] bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg transition-all duration-500 ease-out shadow-md"
+              className="absolute h-[calc(100%-8px)] bg-gradient-to-r from-blue-600 to-blue-700 transition-all duration-500 ease-out shadow-md"
               style={{
                 left: '4px',
                 top: '4px',
-                width: positions[activeCategory].w,
-                transform: `translateX(${positions[activeCategory].x}px)`
+                width: navPositions.width - 8,
+                transform: `translateX(${navPositions.x}px)`,
+                borderRadius: '0.5rem'
               }}
             />
             {skillCategories.map((category, index) => (
               <button
                 key={category.title}
+                ref={el => buttonRefs.current[index] = el}
                 onClick={() => setActiveCategory(index)}
                 className={`
                   flex items-center gap-2 px-6 py-2.5 rounded-lg transition-colors duration-300
-                  relative z-10 justify-center min-w-[120px]
+                  relative z-10 justify-center
                   ${activeCategory === index 
                     ? 'text-white' 
                     : 'text-gray-700 hover:text-blue-600'

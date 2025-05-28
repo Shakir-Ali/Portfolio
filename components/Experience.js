@@ -88,9 +88,7 @@ const Experience = () => {
           <div className="absolute -top-16 right-1/3 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" />
           <div className="absolute top-32 left-1/3 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse delay-700" />
           
-          <h2 className="text-4xl lg:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
-            Professional Journey
-          </h2>
+
 
           <div className="max-w-5xl mx-auto relative">
             {/* Company Logo */}

@@ -11,7 +11,7 @@ import ScrollToTop from '../components/ScrollToTop';
 
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-hidden">
       <Navbar />
       <Hero />
       <About />
