@@ -5,6 +5,13 @@ import { LayoutGrid, Code2, Cloud, Database, Wrench } from 'lucide-react';
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState(0);
+  const [positions] = useState({
+    0: { x: 0, w: 225 },     // Frontend Development
+    1: { x: 225, w: 225 },   // Backend Development
+    2: { x: 450, w: 175 },   // DevOps & Cloud
+    3: { x: 625, w: 145 },   // Databases
+    4: { x: 770, w: 165 }    // Tools & Testing
+  });
 
   const skillCategories = [
     {
@@ -83,21 +90,31 @@ const Skills = () => {
         
         {/* Category Navigation */}
         <div className="flex justify-center mb-8">
-          <nav className="flex flex-nowrap overflow-x-auto max-w-full p-2 bg-white rounded-xl shadow-lg">
+          <nav className="flex flex-nowrap overflow-x-auto max-w-full p-1.5 bg-white rounded-xl shadow-lg relative">
+            <div 
+              className="absolute h-[calc(100%-8px)] bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg transition-all duration-500 ease-out shadow-md"
+              style={{
+                left: '4px',
+                top: '4px',
+                width: positions[activeCategory].w,
+                transform: `translateX(${positions[activeCategory].x}px)`
+              }}
+            />
             {skillCategories.map((category, index) => (
               <button
                 key={category.title}
                 onClick={() => setActiveCategory(index)}
                 className={`
-                  flex items-center gap-2 px-5 py-2.5 rounded-lg transition-all duration-300 
+                  flex items-center gap-2 px-6 py-2.5 rounded-lg transition-colors duration-300
+                  relative z-10 justify-center min-w-[120px]
                   ${activeCategory === index 
-                    ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white scale-105 shadow-md' 
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-blue-600'
+                    ? 'text-white' 
+                    : 'text-gray-700 hover:text-blue-600'
                   }
-                  font-medium text-sm whitespace-nowrap mx-1 first:ml-0 last:mr-0
+                  font-medium text-sm whitespace-nowrap
                 `}
               >
-                <span className={`${activeCategory === index ? 'text-white' : 'text-blue-600'}`}>
+                <span className={`transition-colors duration-300 ${activeCategory === index ? 'text-white' : 'text-blue-600'}`}>
                   {categoryIcons[category.title]}
                 </span>
                 <span>{category.title}</span>
