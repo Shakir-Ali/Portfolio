@@ -77,12 +77,12 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="min-h-screen relative bg-gradient-to-b from-background/95 to-background">
+    <section id="experience" className="min-h-screen relative bg-gradient-to-b from-background to-background/95 py-10">
       {/* Background decorative elements */}
       <div className="absolute inset-0 bg-grid-small-white/[0.2] -z-[1]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
       
-      <div className="container pt-32 pb-40 relative">
+      <div className="container pt-36 pb-44 relative">
         <div className="relative">
           {/* Animated background elements */}
           <div className="absolute -top-16 right-1/3 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" />
@@ -159,7 +159,7 @@ const Experience = () => {
                           {exp.achievements.map((achievement, i) => (
                             <li key={i} className="group/item flex items-start gap-2">
                               <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/50 group-hover/item:bg-primary transition-colors duration-300" />
-                              <span className="group-hover/item:text-foreground transition-colors duration-300">
+                              <span className="group-hover:item:text-foreground transition-colors duration-300">
                                 {achievement}
                               </span>
                             </li>
