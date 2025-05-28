@@ -11,36 +11,53 @@ const Hero = () => {
       {/* Main content */}
       <div className="container relative mx-auto px-4">
         <div className="flex flex-col items-start justify-center min-h-screen pt-20 pb-8">
-          {/* Main heading */}
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-4 leading-tight">
-            Technology
-            <br />
-            Analyst &
-            <br />
-            <span className="text-primary">Developer</span>
-          </h1>
+          <div className="relative z-10">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-4 leading-tight">
+              Technology
+              <br />
+              Analyst &
+              <br />
+              <span className="text-primary">Developer</span>
+            </h1>
 
-          {/* Description */}
-          <p className="max-w-md text-lg text-muted-foreground/80 mb-12">
-            Hi, I'm Shakir Ali. Passionate about creating efficient, scalable solutions 
-            and turning complex problems into elegant applications.
-          </p>
+            {/* Description */}
+            <p className="max-w-md text-lg text-muted-foreground/80 mb-12">
+              Hi, I'm Shakir Ali. Passionate about creating efficient, scalable solutions 
+              and turning complex problems into elegant applications.
+            </p>
 
-          {/* CTA Section */}
-          <div className="flex gap-6 items-center">
-            <a 
-              href="#contact"
-              className="group relative inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-primary rounded-lg overflow-hidden transition-shadow hover:shadow-2xl hover:shadow-primary/25"
-            >
-              Get in Touch
-              <ArrowDownRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" />
-            </a>
-            <a 
-              href="#about"
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
-            >
-              Learn more about me →
-            </a>
+            {/* CTA Section */}
+            <div className="flex gap-6 items-center">
+              <a 
+                href="#contact"
+                className="group relative inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-primary rounded-lg overflow-hidden transition-shadow hover:shadow-2xl hover:shadow-primary/25"
+              >
+                Get in Touch
+                <ArrowDownRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" />
+              </a>
+              <a 
+                href="#about"
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              >
+                Learn more about me →
+              </a>
+            </div>
+          </div>
+
+          {/* Dynamic Lines Animation */}
+          <div className="line-decoration">
+            {/* Horizontal Lines */}
+            <div className="line line-1" />
+            <div className="line line-2" />
+            <div className="line line-3" />
+            <div className="line line-4" />
+            <div className="line line-5" />
+            
+            {/* Vertical Lines */}
+            <div className="vertical-line vertical-line-1" />
+            <div className="vertical-line vertical-line-2" />
+            <div className="vertical-line vertical-line-3" />
+            <div className="vertical-line vertical-line-4" />
           </div>
 
           {/* Decorative elements - Background Dots */}

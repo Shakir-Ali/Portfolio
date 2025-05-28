@@ -503,3 +503,291 @@ h1, h2, h3, h4, h5, h6 {
 .writing-vertical-lr {
   writing-mode: vertical-lr;
 }
+
+/* Geometric Animations */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes float-reverse {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(-5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes pulse-fade {
+  0% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.5; }
+}
+
+.geometric-shapes {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.shape {
+  position: absolute;
+  border: 2px solid rgba(var(--primary-rgb), 0.4);
+  background: rgba(var(--primary-rgb), 0.1);
+  backdrop-filter: blur(4px);
+  animation: pulse-fade 4s ease-in-out infinite;
+}
+
+.shape.circle {
+  border-radius: 50%;
+}
+
+.shape.triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: rgba(var(--primary-rgb), 0.15);
+}
+
+.shape.square {
+  border-radius: 12px;
+}
+
+.shape-1 {
+  width: 180px;
+  height: 180px;
+  top: 15%;
+  right: 20%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.shape-2 {
+  width: 120px;
+  height: 120px;
+  top: 40%;
+  right: 10%;
+  animation: float-reverse 9s ease-in-out infinite;
+}
+
+.shape-3 {
+  width: 200px;
+  height: 200px;
+  top: 55%;
+  right: 25%;
+  animation: float 10s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .geometric-shapes {
+    width: 400px;
+    height: 400px;
+    opacity: 0.7;
+    right: -10%;
+  }
+  
+  .shape-1 {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .shape-2 {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .shape-3 {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* Dynamic Line Animations */
+@keyframes line-float {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+  50% { transform: translateY(-15px) rotate(3deg); opacity: 0.7; }
+  100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+}
+
+@keyframes line-pulse {
+  0% { transform: scaleX(1); opacity: 0.3; }
+  50% { transform: scaleX(1.2); opacity: 0.7; }
+  100% { transform: scaleX(1); opacity: 0.3; }
+}
+
+@keyframes line-draw {
+  0% { transform: scaleX(0); opacity: 0; }
+  100% { transform: scaleX(1); opacity: 1; }
+}
+
+.line-decoration {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 600px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.line {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0) 0%, rgba(37, 99, 235, 0.4) 50%, rgba(37, 99, 235, 0) 100%);
+  transform-origin: left center;
+  z-index: 2;
+}
+
+.line::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  background-color: rgba(37, 99, 235, 0.6);
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+}
+
+.line-1 {
+  width: 200px;
+  top: 20%;
+  right: 15%;
+  transform-origin: right center;
+  animation: line-float 8s ease-in-out infinite;
+}
+
+.line-2 {
+  width: 300px;
+  top: 35%;
+  right: 20%;
+  animation: line-pulse 6s ease-in-out infinite;
+}
+
+.line-3 {
+  width: 250px;
+  top: 50%;
+  right: 10%;
+  transform-origin: right center;
+  animation: line-float 7s ease-in-out infinite reverse;
+}
+
+.line-4 {
+  width: 180px;
+  top: 65%;
+  right: 25%;
+  animation: line-pulse 9s ease-in-out infinite;
+}
+
+.line-5 {
+  width: 220px;
+  top: 80%;
+  right: 15%;
+  transform-origin: right center;
+  animation: line-float 10s ease-in-out infinite;
+}
+
+.line {
+  animation-name: line-draw;
+  animation-duration: 1.5s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: forwards;
+}
+
+.line-1 { animation-delay: 0.2s; }
+.line-2 { animation-delay: 0.4s; }
+.line-3 { animation-delay: 0.6s; }
+.line-4 { animation-delay: 0.8s; }
+.line-5 { animation-delay: 1s; }
+
+@media (max-width: 768px) {
+  .line-decoration {
+    width: 300px;
+    opacity: 0.5;
+  }
+  
+  .line {
+    width: 120px !important;
+  }
+}
+
+/* Vertical Line Animations */
+@keyframes line-float-vertical {
+  0% { transform: translateX(0) scaleY(1); opacity: 0.3; }
+  50% { transform: translateX(-10px) scaleY(1.1); opacity: 0.7; }
+  100% { transform: translateX(0) scaleY(1); opacity: 0.3; }
+}
+
+@keyframes line-draw-vertical {
+  0% { transform: scaleY(0); opacity: 0; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+.vertical-line {
+  position: absolute;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0) 0%, rgba(37, 99, 235, 0.4) 50%, rgba(37, 99, 235, 0) 100%);
+  transform-origin: top center;
+}
+
+.vertical-line::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background-color: rgba(37, 99, 235, 0.6);
+  border-radius: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.vertical-line-1 {
+  height: 180px;
+  top: 15%;
+  right: 30%;
+  animation: line-draw-vertical 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+             line-float-vertical 8s ease-in-out infinite;
+  animation-delay: 0.3s, 1.8s;
+}
+
+.vertical-line-2 {
+  height: 250px;
+  top: 25%;
+  right: 45%;
+  animation: line-draw-vertical 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+             line-float-vertical 9s ease-in-out infinite reverse;
+  animation-delay: 0.6s, 2.1s;
+}
+
+.vertical-line-3 {
+  height: 200px;
+  top: 40%;
+  right: 15%;
+  animation: line-draw-vertical 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+             line-float-vertical 7s ease-in-out infinite;
+  animation-delay: 0.9s, 2.4s;
+}
+
+.vertical-line-4 {
+  height: 160px;
+  top: 55%;
+  right: 35%;
+  animation: line-draw-vertical 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+             line-float-vertical 10s ease-in-out infinite reverse;
+  animation-delay: 1.2s, 2.7s;
+}
+
+.vertical-line {
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .vertical-line {
+    height: 120px !important;
+    opacity: 0.5;
+  }
+}
