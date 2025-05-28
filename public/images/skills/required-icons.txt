@@ -1,0 +1,21 @@
+Still Required Skill Icons:
+
+Frontend Development:
+1. jsp.png - JSP
+
+Backend Development:
+2. mockito.png - Mockito
+3. spring-test.svg - Spring Test
+
+Databases:
+4. oracle.svg - Oracle
+5. sql.svg - SQL Optimization
+
+Tools & Testing:
+6. mockito.png - Mockito
+
+Note: Save all icons in the public/images/skills/ directory
+Common sources for these icons:
+- DevIcon (https://devicon.dev/)
+- Simple Icons (https://simpleicons.org/)
+- SVG Repo (https://www.svgrepo.com/)
