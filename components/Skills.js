@@ -14,9 +14,12 @@ const Skills = () => {
         { name: "CSS", icon: "/images/skills/css3.svg" },
         { name: "JavaScript", icon: "/images/skills/javascript.svg" },
         { name: "TypeScript", icon: "/images/skills/typescript.svg" },
+        { name: "React", icon: "/images/skills/react.svg" },
         { name: "Angular", icon: "/images/skills/angular.svg" },
         { name: "Next.js", icon: "/images/skills/nextjs.svg" },
-        { name: "JSP", icon: "/images/skills/jsp.png" }
+        { name: "Tailwind CSS", icon: "/images/skills/tailwind.svg" },
+        { name: "Shadcn UI", icon: "/images/skills/shadcn.svg" },
+        { name: "JSP", icon: "/images/skills/jsp.svg" }
       ]
     },
     {
@@ -35,6 +38,7 @@ const Skills = () => {
         { name: "Kubernetes", icon: "/images/skills/kubernetes.svg" },
         { name: "Apache Kafka", icon: "/images/skills/kafka.svg" },
         { name: "AWS", icon: "/images/skills/aws.svg" },
+        { name: "GCP", icon: "/images/skills/gcp.svg" },
         { name: "Github Actions", icon: "/images/skills/github-actions.svg" },
         { name: "CI/CD Pipelines", icon: "/images/skills/cicd.svg" }
       ]
@@ -54,6 +58,8 @@ const Skills = () => {
         { name: "Git", icon: "/images/skills/git.svg" },
         { name: "GitHub", icon: "/images/skills/github.svg" },
         { name: "Postman", icon: "/images/skills/postman.svg" },
+        { name: "Swagger", icon: "/images/skills/swagger.svg" },
+        { name: "SonarQube", icon: "/images/skills/sonarqube.svg" },
         { name: "JUnit", icon: "/images/skills/junit5.svg" },
         { name: "Mockito", icon: "/images/skills/mockito.png" }
       ]

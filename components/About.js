@@ -51,30 +51,15 @@ const About = () => {
           <h2 className="text-4xl lg:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
             About Me
           </h2>
-          
-          <div className="max-w-4xl mx-auto relative">
-            <div className="reveal space-y-8 bg-background/50 backdrop-blur-sm p-8 rounded-2xl border border-primary/10 hover:border-primary/20 transition-colors duration-300 shadow-lg">
-              {/* Top gradient line */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-              
-              <p className="text-lg text-muted-foreground leading-relaxed reveal">
-                I am a Software Engineer with 4 years of experience specializing in backend and full-stack development. With a strong foundation in Java and Spring Boot, I've consistently delivered high-performance applications while leading engineering teams at Infosys.
-              </p>
-              
-              <div className="relative px-6 py-4 bg-primary/5 rounded-lg reveal">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <p className="text-lg text-muted-foreground leading-relaxed relative z-10">
-                  My technical expertise spans across modern web technologies, cloud solutions, and DevOps practices. I've successfully improved system efficiency by 75% through innovative solutions and reduced deployment time by 40% using optimized CI/CD pipelines.
-                </p>
-              </div>
 
-              <p className="text-lg text-muted-foreground leading-relaxed reveal">
-                As a passionate advocate for quality and innovation, I focus on creating scalable solutions while mentoring junior developers. My contributions have been recognized through multiple awards, including the RISE Award for exceptional project ownership and the Best Team Award for delivering critical solutions.
-              </p>
-
-              {/* Bottom gradient line */}
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-            </div>
+          <div className="reveal max-w-3xl mx-auto space-y-6 text-lg text-muted-foreground">
+            <p className="leading-relaxed">
+              I'm a software engineer with a strong foundation in backend and full-stack development, currently shaping scalable solutions at Infosys. I enjoy turning complex challenges into clean, efficient code and thrive in collaborative, agile environments. Over the years, I've honed my skills in Java, Spring Boot, Angular, and DevOps tools—always aiming to build with performance, stability, and user experience in mind.
+            </p>
+            
+            <p className="leading-relaxed">
+              When I'm not coding, you'll find me exploring new technologies, mentoring teammates, or quietly pushing the limits of what I can do next.
+            </p>
           </div>
         </div>
       </div>
