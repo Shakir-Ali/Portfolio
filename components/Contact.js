@@ -65,42 +65,31 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-gradient-to-br from-[#f6f0fa] to-[#ede9fe]">
       <h2 className="text-3xl font-extrabold text-center mb-12 text-[#7c3aed] tracking-tight">Contact</h2>
-      <div className="max-w-md mx-auto bg-white/90 p-8 rounded-2xl shadow-lg text-center border border-[#c3b1e1]">
+      <div className="max-w-2xl mx-auto bg-white/90 p-8 rounded-2xl shadow-lg text-center border border-[#c3b1e1]">
         <p className="mb-6 text-[#5b4a6e] text-lg font-medium">
           Let's connect and explore opportunities together. Feel free to reach out through any of these channels.
         </p>
-        
-        <div className="grid grid-cols-1 gap-6">
+        <div className="flex flex-col gap-3 items-center w-full">
           {contactInfo.map((info, index) => (
             <a
               key={index}
               href={info.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative overflow-hidden"
+              className="group relative overflow-hidden w-full max-w-2xl mx-auto"
             >
-              <div className="relative bg-background/50 backdrop-blur-sm p-6 rounded-2xl border border-primary/10 
-                transition-all duration-300 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 
-                  group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="flex items-start gap-4 relative z-10">
-                  <span className="p-3 bg-primary/10 rounded-xl text-primary group-hover:scale-110 transition-transform duration-300">
-                    {info.icon}
-                  </span>
-                  <div className="space-y-1">
-                    <h3 className="font-semibold text-lg text-foreground/90">{info.label}</h3>
-                    <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                      {info.value}
-                    </p>
-                  </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0 
-                  transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+              <div className="relative bg-background/50 backdrop-blur-sm p-4 rounded-xl border border-primary/10 
+                transition-all duration-300 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 flex items-center justify-center gap-3">
+                <span className="flex items-center justify-center p-2 bg-primary/10 rounded-lg text-primary group-hover:scale-110 transition-transform duration-300">
+                  {React.cloneElement(info.icon, { className: 'w-4 h-4' })}
+                </span>
+                <span className="text-[#5b4a6e] text-base font-medium break-all group-hover:underline transition-colors duration-200">
+                  {info.value}
+                </span>
               </div>
             </a>
           ))}
         </div>
-        
         <a
           href="mailto:sayedshakirali0@gmail.com"
           className="mt-6 inline-block px-6 py-3 bg-[#7c3aed] text-white rounded-full font-semibold shadow hover:bg-[#a78bfa] transition"
