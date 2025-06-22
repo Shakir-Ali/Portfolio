@@ -77,100 +77,34 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="min-h-screen relative bg-gradient-to-b from-background to-background/95 py-10">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-grid-small-white/[0.2] -z-[1]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
-      
-      <div className="container pt-36 pb-44 relative">
-        <div className="relative">
-          {/* Animated background elements */}
-          <div className="absolute -top-16 right-1/3 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute top-32 left-1/3 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse delay-700" />
-          
-
-
-          <div className="max-w-5xl mx-auto relative">
-            {/* Company Logo */}
-            <div className="relative mb-12 reveal flex justify-center">
-              <div className="relative group">
-                <div className="absolute -inset-2 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 rounded-full opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
-                <Image
-                  src="/images/infosys-logo.png"
-                  alt="Infosys"
-                  width={100}
-                  height={100}
-                  className="relative z-10 opacity-80 hover:opacity-100 transition-all duration-300 group-hover:scale-105"
-                />
-              </div>
+    <section id="experience" className="py-20 bg-gradient-to-br from-[#f6f0fa] to-[#ede9fe]">
+      <h2 className="text-3xl font-extrabold text-center mb-12 text-[#7c3aed] tracking-tight">Experience</h2>
+      <div className="max-w-3xl mx-auto flex flex-col gap-8">
+        {experiences.map((exp, idx) => (
+          <div key={exp.company} className="bg-white/90 rounded-2xl shadow-lg p-8 border border-[#c3b1e1]">
+            <div className="flex justify-between items-center mb-2">
+              <span className="font-semibold text-lg text-[#7c3aed]">{exp.company}</span>
+              <span className="text-sm text-[#a78bfa]">{exp.date}</span>
             </div>
-
-            {/* Experience Timeline */}
-            <div className="relative space-y-8 pl-8">
-              {/* Timeline line */}
-              <div className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-primary/20 via-primary/10 to-transparent reveal">
-                <div className="timeline-progress absolute top-0 w-full bg-gradient-to-b from-primary to-primary/50 origin-top"></div>
-              </div>
-
-              {experiences.map((exp, index) => (
-                <div key={index} className="reveal group">
-                  <div className="relative">
-                    {/* Timeline marker */}
-                    <div className="absolute -left-[22px] top-8 w-9 h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                    
-                    {/* Role Card */}
-                    <div className="relative bg-background/50 backdrop-blur-sm p-6 rounded-2xl border border-primary/10 hover:border-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
-                      {/* Gradient borders */}
-                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-                      
-                      {/* Glow effect */}
-                      <div className="absolute -inset-px bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
-                      
-                      {/* Content */}
-                      <div className="relative">
-                        {/* Header */}
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
-                          <h3 className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
-                            {exp.title}
-                          </h3>
-                          <span className="flex items-center gap-2 text-sm text-primary/80">
-                            <Calendar size={16} className="group-hover:rotate-12 transition-transform duration-300" />
-                            {exp.date}
-                          </span>
-                        </div>
-                        
-                        {/* Company & Location */}
-                        <div className="flex flex-col sm:flex-row gap-3 mb-4 text-sm text-muted-foreground">
-                          <span className="flex items-center gap-1">
-                            <Building2 size={16} />
-                            {exp.company}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <MapPin size={16} />
-                            {exp.location}
-                          </span>
-                        </div>
-
-                        {/* Achievements */}
-                        <ul className="space-y-3 text-muted-foreground">
-                          {exp.achievements.map((achievement, i) => (
-                            <li key={i} className="group/item flex items-start gap-2">
-                              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/50 group-hover/item:bg-primary transition-colors duration-300" />
-                              <span className="group-hover:item:text-foreground transition-colors duration-300">
-                                {achievement}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div className="text-[#5b4a6e] font-medium mb-1">{exp.title}</div>
+            <div className="text-[#5b4a6e] text-sm">
+              <span className="flex items-center gap-1">
+                <Building2 size={16} />
+                {exp.location}
+              </span>
+            </div>
+            <ul className="space-y-3 text-muted-foreground mt-4">
+              {exp.achievements.map((achievement, i) => (
+                <li key={i} className="group/item flex items-start gap-2">
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:item:bg-primary transition-colors duration-300" />
+                  <span className="group-hover:item:text-foreground transition-colors duration-300">
+                    {achievement}
+                  </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   );
