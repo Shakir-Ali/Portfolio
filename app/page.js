@@ -14,11 +14,10 @@ export default function Home() {
     <main className="overflow-hidden">
       <Navbar />
       <Hero />
-      <About />
-      <Experience />
       <Skills />
-      <Projects />
+      <Experience />
       <Education />
+      <Projects />
       <Contact />
       <Footer />
       <ScrollToTop />

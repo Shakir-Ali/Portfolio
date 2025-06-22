@@ -99,66 +99,66 @@ const Skills = () => {
   }, [activeCategory]);
 
   return (
-    <section id="skills" className="py-10 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
-        
-        {/* Category Navigation */}
-        <div className="flex justify-center mb-8">
-          <nav className="flex flex-nowrap overflow-x-auto max-w-full p-1.5 bg-white rounded-xl shadow-lg relative">
-            <div 
-              className="absolute h-[calc(100%-8px)] bg-gradient-to-r from-blue-600 to-blue-700 transition-all duration-500 ease-out shadow-md"
-              style={{
-                left: '4px',
-                top: '4px',
-                width: navPositions.width - 8,
-                transform: `translateX(${navPositions.x}px)`,
-                borderRadius: '0.5rem'
-              }}
-            />
-            {skillCategories.map((category, index) => (
+    <section id="skills" className="py-20 bg-gradient-to-br from-[#f6f0fa] to-[#ede9fe] min-h-[80vh]">
+      <h2 className="text-3xl font-extrabold text-center mb-10 text-[#7c3aed] tracking-tight">Skills</h2>
+      {/* Internal Navbar as pill switcher */}
+      <nav className="flex justify-center mb-10">
+        {/* Desktop Pills */}
+        <ul className="hidden sm:flex gap-3 bg-[#ede9fe] rounded-full p-2 shadow border border-[#c3b1e1]">
+          {skillCategories.map((category, idx) => (
+            <li key={category.title}>
               <button
-                key={category.title}
-                ref={el => buttonRefs.current[index] = el}
-                onClick={() => setActiveCategory(index)}
-                className={`
-                  flex items-center gap-2 px-6 py-2.5 rounded-lg transition-colors duration-300
-                  relative z-10 justify-center
-                  ${activeCategory === index 
-                    ? 'text-white' 
-                    : 'text-gray-700 hover:text-blue-600'
-                  }
-                  font-medium text-sm whitespace-nowrap
+                onClick={() => setActiveCategory(idx)}
+                className={`flex items-center gap-2 px-5 py-2 rounded-full font-medium transition-colors duration-200 text-sm
+                  ${activeCategory === idx
+                    ? 'bg-[#7c3aed] text-white shadow'
+                    : 'bg-transparent text-[#7c3aed] hover:bg-[#f6f0fa]'}
                 `}
               >
-                <span className={`transition-colors duration-300 ${activeCategory === index ? 'text-white' : 'text-blue-600'}`}>
-                  {categoryIcons[category.title]}
-                </span>
-                <span>{category.title}</span>
+                <span>{categoryIcons[category.title]}</span>
+                <span className="hidden md:inline">{category.title}</span>
               </button>
-            ))}
-          </nav>
-        </div>
-
-        {/* Skills Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-8">
-          {skillCategories[activeCategory].skills.map((skill, index) => (
-            <div
-              key={skill.name}
-              className="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
-            >
-              <div className="w-12 h-12 flex items-center justify-center mb-3">
-                <img
-                  src={skill.icon}
-                  alt={`${skill.name} icon`}
-                  className="w-10 h-10 object-contain"
-                />
-              </div>
-              <h3 className="text-sm font-medium text-gray-900 text-center">
-                {skill.name}
-              </h3>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
+        {/* Mobile Pills (Icons Only) */}
+        <ul className="flex sm:hidden gap-2 bg-[#ede9fe] rounded-full p-2 shadow border border-[#c3b1e1]">
+          {skillCategories.map((category, idx) => (
+            <li key={category.title}>
+              <button
+                onClick={() => setActiveCategory(idx)}
+                className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors duration-200
+                  ${activeCategory === idx
+                    ? 'bg-[#7c3aed] text-white shadow'
+                    : 'bg-transparent text-[#7c3aed] hover:bg-[#f6f0fa]'}
+                `}
+                aria-label={category.title}
+              >
+                {categoryIcons[category.title]}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      {/* Skills Grid */}
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-8 max-w-5xl mx-auto">
+        {skillCategories[activeCategory].skills.map((skill) => (
+          <div
+            key={skill.name}
+            className="flex flex-col items-center p-4 bg-white rounded-xl shadow hover:shadow-md transition-shadow duration-200 border border-[#ede9fe]"
+          >
+            <div className="w-12 h-12 flex items-center justify-center mb-3">
+              <img
+                src={skill.icon}
+                alt={`${skill.name} icon`}
+                className="w-10 h-10 object-contain"
+              />
+            </div>
+            <h3 className="text-sm font-medium text-[#5b4a6e] text-center">
+              {skill.name}
+            </h3>
+          </div>
+        ))}
       </div>
     </section>
   );
