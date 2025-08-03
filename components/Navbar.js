@@ -1,112 +1,59 @@
-'use client';
+'use client'
+
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { Menu, X, Home, Layers, Briefcase, GraduationCap, FolderOpen, Mail } from 'lucide-react';
+import { Home, Layers, Briefcase, GraduationCap, FolderOpen, Mail } from 'lucide-react';
 
 const navItems = [
-	{ href: '#home', label: 'Home', icon: <Home className="w-5 h-5" /> },
-	{ href: '#skills', label: 'Skills', icon: <Layers className="w-5 h-5" /> },
-	{ href: '#experience', label: 'Experience', icon: <Briefcase className="w-5 h-5" /> },
-	{ href: '#education', label: 'Education', icon: <GraduationCap className="w-5 h-5" /> },
-	{ href: '#projects', label: 'Projects', icon: <FolderOpen className="w-5 h-5" /> },
-	{ href: '#contact', label: 'Contact', icon: <Mail className="w-5 h-5" /> }
+  { href: '#home', label: 'Home', icon: Home },
+  { href: '#skills', label: 'Skills', icon: Layers },
+  { href: '#experience', label: 'Experience', icon: Briefcase },
+  { href: '#education', label: 'Education', icon: GraduationCap },
+  { href: '#projects', label: 'Projects', icon: FolderOpen },
+  { href: '#contact', label: 'Contact', icon: Mail },
 ];
 
-const Navbar = () => {
-	const [isOpen, setIsOpen] = useState(false);
-	const [scrolled, setScrolled] = useState(false);
-	const [activeSection, setActiveSection] = useState('home');
+export default function Navbar() {
+  const [active, setActive] = useState('home');
 
-	useEffect(() => {
-		const handleScroll = () => {
-			setScrolled(window.scrollY > 50);
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionIds = navItems.map(item => item.href.slice(1));
+      let current = sectionIds[0];
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            current = id;
+            break;
+          }
+        }
+      }
+      setActive(current);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-			// Update active section based on scroll position
-			const sections = ['home', 'skills', 'experience', 'education', 'projects', 'contact'];
-			const current = sections.find(section => {
-				const element = document.getElementById(section);
-				if (element) {
-					const rect = element.getBoundingClientRect();
-					return rect.top <= 100 && rect.bottom >= 100;
-				}
-				return false;
-			});
-			if (current) {
-				setActiveSection(current);
-			}
-		};
-
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
-	}, []);
-
-	return (
-		<nav className="fixed top-0 left-0 right-0 z-50 bg-[#f6f0fa]/90 backdrop-blur border-b border-[#c3b1e1] shadow-sm">
-			<div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
-				<Link
-					href="/"
-					className="font-bold text-xl tracking-widest text-[#7c3aed] rounded-lg px-3 py-1 bg-[#ede9fe] shadow"
-				>
-					SA
-				</Link>
-
-				{/* Desktop Menu */}
-				<ul className="hidden md:flex items-center gap-8">
-					{navItems.map((item) => (
-						<li key={item.href}>
-							<a
-								href={item.href}
-								onClick={() => setIsOpen(false)}
-								className={`text-[#5b4a6e] hover:text-[#7c3aed] transition-colors font-medium px-2 py-1 rounded-md ${
-									activeSection === item.href.slice(1)
-										? 'text-[#7c3aed] bg-[#ede9fe]'
-										: 'text-[#5b4a6e]'
-								}`}
-							>
-								<span className="inline-block align-middle mr-2">{item.icon}</span>
-								<span className="align-middle">{item.label}</span>
-							</a>
-						</li>
-					))}
-				</ul>
-
-				{/* Mobile Menu Button */}
-				<button
-					className="md:hidden relative z-50 p-2 text-[#5b4a6e] hover:text-[#7c3aed] transition-colors"
-					onClick={() => setIsOpen(!isOpen)}
-				>
-					{isOpen ? <X size={24} /> : <Menu size={24} />}
-				</button>
-			</div>
-
-			{/* Mobile Menu Overlay */}
-			<div className={`
-				fixed inset-0 z-40 bg-[#f6f0fa]/95 backdrop-blur-lg transition-transform duration-300 md:hidden
-				${isOpen ? 'translate-x-0' : 'translate-x-full'}
-			`}>
-				<div className="flex items-center justify-center h-full">
-					<ul className="flex flex-col items-center gap-6">
-						{navItems.map((item) => (
-							<li key={item.href}>
-								<a
-									href={item.href}
-									onClick={() => setIsOpen(false)}
-									className={`flex flex-col items-center text-lg font-medium transition-colors duration-300 ${
-										activeSection === item.href.slice(1)
-											? 'text-[#7c3aed] bg-[#ede9fe]'
-											: 'text-[#5b4a6e] hover:text-[#7c3aed]'
-									}`}
-								>
-									<span className="mb-1">{item.icon}</span>
-									<span className="text-sm">{item.label}</span>
-								</a>
-							</li>
-						))}
-					</ul>
-				</div>
-			</div>
-		</nav>
-	);
-};
-
-export default Navbar;
+  return (
+    <nav className="fixed bottom-2 left-1/2 -translate-x-1/2 z-50 bg-[#232336] rounded-full shadow-lg px-2 py-1 flex gap-2 items-center border border-[#a78bfa]/30 w-[95vw] max-w-md md:max-w-2xl mx-auto">
+      {navItems.map((item) => {
+        const Icon = item.icon;
+        const isActive = active === item.href.slice(1);
+        return (
+          <a
+            key={item.href}
+            href={item.href}
+            onClick={() => setActive(item.href.slice(1))}
+            className={`flex flex-col items-center justify-center px-1.5 py-1 transition-all duration-200 ${isActive ? 'text-[#a78bfa]' : 'text-[#e0e0e0] hover:text-[#a78bfa]'}`}
+            style={{ minWidth: 0, flex: 1 }}
+          >
+            <Icon className={`transition-transform duration-200 ${isActive ? 'scale-125' : 'scale-100'} w-6 h-6`} />
+            <span className="text-[10px] mt-0.5 font-medium truncate w-full text-center">{item.label}</span>
+          </a>
+        );
+      })}
+    </nav>
+  );
+}
